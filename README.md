@@ -1,4 +1,4 @@
-# 🇪🇺 EU Lens — AI-Powered Accessibility & Misinformation Detection
+# EU Lens — AI-Powered Accessibility & Misinformation Detection
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-blue?logo=github)](https://elonmasai7.github.io/Lens/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)](https://reactjs.org/)
@@ -9,7 +9,7 @@
 
 **Making Europe's Digital Information Accessible and Trustworthy for Everyone**
 
-**[🌐 Live Demo](https://elonmasai7.github.io/Lens/)** | **[📖 Documentation](https://github.com/elonmasai7/Lens#readme)**
+**[Live Demo](https://elonmasai7.github.io/Lens/)** | **[Documentation](https://github.com/elonmasai7/Lens#readme)**
 
 ---
 
@@ -30,12 +30,12 @@ The platform addresses two interconnected crises:
 
 ## Features
 
-### 🛡️ AI Misinformation Analyzer
+### AI Misinformation Analyzer
 - Detects emotional manipulation, fake statistics, suspicious claims, propaganda patterns, misleading headlines, and AI-generated content
 - Generates trust scores (0-100), risk indicators with severity levels, and source credibility ratings
 - Provides alternative trusted sources and detailed explanations
 
-### ♿ Accessibility Transformation Engine
+### Accessibility Transformation Engine
 - Dyslexia-friendly mode with specialized font and spacing
 - High contrast mode for visual impairments
 - Adjustable text spacing, font size, and line height
@@ -43,20 +43,20 @@ The platform addresses two interconnected crises:
 - AI voice narration support
 - Full WCAG 2.2 AA compliance
 
-### 🤖 Inclusive AI Assistant
+### Inclusive AI Assistant
 - Explains complex content in simple language
 - Summarizes articles and documents
 - Translates complex political/medical language
 - Supports all 24 EU languages
 - Safe, moderated responses
 
-### 🔍 Browser Extension Simulation
+### Browser Extension Simulation
 - Real-time content scanning while browsing
 - Misinformation alerts with trust score badges
 - One-click accessibility tool activation
 - Privacy-focused local analysis
 
-### 📊 European Trust Dashboard
+### European Trust Dashboard
 - Real-time misinformation trends and analytics
 - Accessibility metrics and impact tracking
 - Geographic trust distribution across EU member states
@@ -227,7 +227,7 @@ Response:
 
 The frontend is automatically deployed to GitHub Pages on every push to `main` via GitHub Actions.
 
-**[🌐 Live Demo → https://elonmasai7.github.io/Lens/](https://elonmasai7.github.io/Lens/)**
+**[Live Demo → https://elonmasai7.github.io/Lens/](https://elonmasai7.github.io/Lens/)**
 
 The Pages site serves the built React SPA. The backend API is not included in the static deployment — API calls fall back to mock data in the frontend when no backend is available.
 
@@ -291,7 +291,7 @@ MIT License — see [LICENSE](LICENSE) for details.
 ---
 
 <p align="center">
-  Built with ❤️ for an accessible, informed, and digitally sovereign Europe.
+  Built for an accessible, informed, and digitally sovereign Europe.
   <br>
-  <a href="https://elonmasai7.github.io/Lens/">🌐 Live Demo</a>
+  <a href="https://elonmasai7.github.io/Lens/">Live Demo</a>
 </p>
