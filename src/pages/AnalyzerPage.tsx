@@ -1,9 +1,9 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send, Shield, AlertTriangle, ExternalLink, BookOpen, Loader2, ChevronDown, ChevronUp } from 'lucide-react'
 import { useAI } from '@/hooks/useAI'
 import { useAnalyzerStore } from '@/stores/analyzerStore'
-import { trustColor, trustLabel } from '@/lib/utils'
+import { trustColor } from '@/lib/utils'
 import type { RiskIndicator, AlternativeSource } from '@/types'
 
 export default function AnalyzerPage() {

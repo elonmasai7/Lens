@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
-import { Shield, ArrowRight, Sparkles } from 'lucide-react'
+import { Shield, ArrowRight, Sparkles, Loader2 } from 'lucide-react'
 import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { analyzeText } from '@/hooks/useAI'
 
 interface DemoResult {
   trustScore: number
@@ -12,26 +13,33 @@ interface DemoResult {
 export default function DemoPreview() {
   const [demoText, setDemoText] = useState('')
   const [demoResult, setDemoResult] = useState<DemoResult | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
   const handleDemoSubmit = useCallback(async () => {
-    if (!demoText.trim()) return
+    if (!demoText.trim() || isLoading) return
+    setIsLoading(true)
     try {
-      const res = await fetch('/api/v1/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: demoText }),
+      const result = await analyzeText(demoText)
+      setDemoResult({
+        trustScore: result.trustScore,
+        summary: result.summary,
+        riskIndicators: result.riskIndicators.map((r) => ({
+          category: r.category,
+          severity: r.severity,
+          description: r.description,
+        })),
       })
-      const data = await res.json()
-      setDemoResult(data.data || data)
     } catch {
       setDemoResult({
         trustScore: 23,
         summary: 'This content shows signs of emotional manipulation and unsubstantiated claims.',
         riskIndicators: [{ category: 'emotional_manipulation', severity: 'high', description: 'Uses fear-based language' }],
       })
+    } finally {
+      setIsLoading(false)
     }
-  }, [demoText])
+  }, [demoText, isLoading])
 
   return (
     <section className="py-24" role="region" aria-label="Live demo">
@@ -73,11 +81,15 @@ export default function DemoPreview() {
           />
           <button
             onClick={handleDemoSubmit}
-            disabled={!demoText.trim()}
+            disabled={!demoText.trim() || isLoading}
             className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-all disabled:opacity-50 mb-4"
           >
-            <Shield className="w-4 h-4" aria-hidden="true" />
-            Analyze Content
+            {isLoading ? (
+              <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
+            ) : (
+              <Shield className="w-4 h-4" aria-hidden="true" />
+            )}
+            {isLoading ? 'Analyzing...' : 'Analyze Content'}
           </button>
 
           {demoResult && (

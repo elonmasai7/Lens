@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Accessibility, Shield, BarChart3, Home, Search, Settings, ExternalLink, Info } from 'lucide-react'
+import { Menu, X, Accessibility, Shield, BarChart3, Home, Search, ExternalLink, Info } from 'lucide-react'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import ThemeToggle from '../shared/ThemeToggle'
@@ -59,6 +59,7 @@ export default function Header() {
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileOpen}
+              aria-controls="mobile-nav-menu"
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -67,7 +68,7 @@ export default function Header() {
       </nav>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-border/50 glass" role="navigation" aria-label="Mobile navigation">
+        <div id="mobile-nav-menu" className="md:hidden border-t border-border/50 glass" role="navigation" aria-label="Mobile navigation">
           <div className="px-4 py-3 space-y-1">
             {navLinks.map((link) => {
               const Icon = link.icon

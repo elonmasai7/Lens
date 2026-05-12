@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
-import { analyzeContent, summarizeContent, simplifyContent, getDashboardMetrics } from '@/lib/api'
-import { mockAnalyses, mockDashboardData } from '@/lib/mockData'
 import { useAnalyzerStore } from '@/stores/analyzerStore'
+import { analyzeContent, getDashboardMetrics } from '@/lib/api'
+import { mockAnalyses, mockDashboardData } from '@/lib/mockData'
 import type { AnalysisResult, DashboardMetrics } from '@/types'
 
 export function useAI() {
@@ -10,7 +10,7 @@ export function useAI() {
   const setCurrentAnalysis = useAnalyzerStore((s) => s.setCurrentAnalysis)
   const addAnalysis = useAnalyzerStore((s) => s.addAnalysis)
 
-  const analyze = useCallback(async (text: string, url?: string) => {
+  const analyze = async (text: string, url?: string) => {
     setLoading(true)
     setError(null)
     try {
@@ -18,7 +18,7 @@ export function useAI() {
       setCurrentAnalysis(result)
       addAnalysis(result)
       return result
-    } catch (e) {
+    } catch {
       const mockResult = getMockResult(text, url)
       setCurrentAnalysis(mockResult)
       addAnalysis(mockResult)
@@ -26,7 +26,7 @@ export function useAI() {
     } finally {
       setLoading(false)
     }
-  }, [setLoading, setError, setCurrentAnalysis, addAnalysis])
+  }
 
   return { analyze }
 }
@@ -41,6 +41,14 @@ function getMockResult(text: string, url?: string): AnalysisResult {
     content: text,
     url,
     analyzedAt: new Date().toISOString(),
+  }
+}
+
+export async function analyzeText(text: string, url?: string): Promise<AnalysisResult> {
+  try {
+    return await analyzeContent(text, url)
+  } catch {
+    return getMockResult(text, url)
   }
 }
 

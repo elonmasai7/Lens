@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Shield, AlertTriangle, Eye, Users, TrendingUp, Activity } from 'lucide-react'
 import { useDashboard } from '@/hooks/useAI'
-import { trustColor, trustLabel } from '@/lib/utils'
+import { trustColor } from '@/lib/utils'
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
 export default function DashboardPage() {

@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion'
 import { useAccessibilityStore } from '@/stores/accessibilityStore'
-import { Eye, Type, AlignLeft, Mic, RefreshCw, Monitor, Volume2, BookOpen } from 'lucide-react'
-import { useState } from 'react'
+import { Eye, AlignLeft, Mic, RefreshCw, Monitor, Volume2, BookOpen } from 'lucide-react'
 
 const sampleText = `The European Parliament has adopted a comprehensive digital regulation package aimed at protecting citizens' online rights. The legislation addresses platform accountability, data protection, and digital accessibility requirements for all member states. This landmark decision represents a significant step forward in creating a safer, more inclusive digital environment for all European citizens.`
 
 export default function AccessibilityPage() {
   const store = useAccessibilityStore()
-  const [showPreview, setShowPreview] = useState(true)
 
   const previewStyle = {
     fontFamily: store.dyslexiaMode ? '"OpenDyslexic", "Comic Sans MS", cursive' : 'Inter, sans-serif',
@@ -173,11 +171,14 @@ function ToggleSetting({
   onChange: (v: boolean) => void
   icon: React.ElementType
 }) {
+  const id = `toggle-${label.toLowerCase().replace(/\s+/g, '-')}`
   return (
     <div className="flex items-start gap-3">
       <button
+        id={id}
         role="switch"
         aria-checked={checked}
+        aria-labelledby={`${id}-label`}
         onClick={() => onChange(!checked)}
         className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors flex-shrink-0 mt-0.5 ${
           checked ? 'bg-primary' : 'bg-input'
@@ -186,7 +187,7 @@ function ToggleSetting({
         <span className={`inline-block h-4 w-4 rounded-full bg-white transition-transform ${checked ? 'translate-x-6' : 'translate-x-1'}`} />
       </button>
       <div>
-        <label className="text-sm font-medium cursor-pointer" onClick={() => onChange(!checked)}>{label}</label>
+        <label id={`${id}-label`} htmlFor={id} className="text-sm font-medium cursor-pointer">{label}</label>
         <p className="text-xs text-muted-foreground">{description}</p>
       </div>
     </div>

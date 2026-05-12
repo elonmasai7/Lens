@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Shield, Eye, Scan, Download, Globe, Lock, Bell, Sliders } from 'lucide-react'
+import { Shield, Eye, Scan, Download, Globe, Lock, Bell, Sliders, ExternalLink } from 'lucide-react'
 
 const extensionFeatures = [
   { icon: Scan, title: 'One-Click Analysis', description: 'Scan any webpage for misinformation with a single click' },
@@ -10,7 +10,24 @@ const extensionFeatures = [
   { icon: Lock, title: 'Privacy First', description: 'All analysis happens locally when possible, no tracking' },
 ]
 
+const STORE_URLS = {
+  chrome: 'https://chrome.google.com/webstore',
+  firefox: 'https://addons.mozilla.org',
+  edge: 'https://microsoftedge.microsoft.com/addons',
+}
+
 export default function ExtensionPage() {
+  const handleDownload = (store: string, url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
+  const handleShowDetails = () => {
+    const alert = document.getElementById('misinformation-alert-details')
+    if (alert) {
+      alert.classList.toggle('hidden')
+    }
+  }
+
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
@@ -27,15 +44,30 @@ export default function ExtensionPage() {
             accessibility tools on every website you visit. Available for Chrome, Firefox, and Edge.
           </p>
           <div className="flex flex-wrap gap-3">
-            <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-medium hover:opacity-90 transition-all shadow-lg shadow-primary/25">
+            <button
+              type="button"
+              onClick={() => handleDownload('Chrome', STORE_URLS.chrome)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-medium hover:opacity-90 transition-all shadow-lg shadow-primary/25"
+              aria-label="Add to Chrome browser"
+            >
               <Download className="w-4 h-4" aria-hidden="true" />
               Add to Chrome
             </button>
-            <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-card font-medium hover:bg-accent transition-colors">
+            <button
+              type="button"
+              onClick={() => handleDownload('Firefox', STORE_URLS.firefox)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-card font-medium hover:bg-accent transition-colors"
+              aria-label="Add to Firefox browser"
+            >
               <Download className="w-4 h-4" aria-hidden="true" />
               Add to Firefox
             </button>
-            <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-card font-medium hover:bg-accent transition-colors">
+            <button
+              type="button"
+              onClick={() => handleDownload('Edge', STORE_URLS.edge)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-card font-medium hover:bg-accent transition-colors"
+              aria-label="Add to Edge browser"
+            >
               <Download className="w-4 h-4" aria-hidden="true" />
               Add to Edge
             </button>
@@ -82,12 +114,26 @@ export default function ExtensionPage() {
                     This article contains emotional manipulation and suspicious claims. Trust Score: 12/100
                   </p>
                   <div className="flex gap-2 mt-2">
-                    <button className="px-2 py-1 rounded bg-red-200 dark:bg-red-800 text-xs font-medium text-red-700 dark:text-red-300">
+                    <button
+                      type="button"
+                      onClick={handleShowDetails}
+                      className="px-2 py-1 rounded bg-red-200 dark:bg-red-800 text-xs font-medium text-red-700 dark:text-red-300"
+                      aria-label="Show details of misinformation alert"
+                    >
                       Show Details
                     </button>
-                    <button className="px-2 py-1 rounded bg-green-200 dark:bg-green-800 text-xs font-medium text-green-700 dark:text-green-300">
+                    <button
+                      type="button"
+                      onClick={() => handleDownload('', 'https://eur-lex.europa.eu')}
+                      className="px-2 py-1 rounded bg-green-200 dark:bg-green-800 text-xs font-medium text-green-700 dark:text-green-300"
+                      aria-label="View trusted alternative sources"
+                    >
                       Trusted Sources
                     </button>
+                  </div>
+                  <div id="misinformation-alert-details" className="hidden mt-2 text-xs text-red-600/80 dark:text-red-400/80 space-y-1">
+                    <p>Detected patterns: emotional manipulation (fear-based language), suspicious claims (unsubstantiated statistics), clickbait headline structure.</p>
+                    <p>Recommended action: Verify with trusted sources before sharing.</p>
                   </div>
                 </div>
               </div>

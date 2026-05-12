@@ -64,8 +64,8 @@ export default function Features() {
                   </div>
                   <h3 className="font-semibold mb-2">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground">{feature.description}</p>
-                  <div className="mt-4 flex items-center gap-1 text-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                    Learn more <span aria-hidden="true">→</span>
+                  <div className="mt-4 flex items-center gap-1 text-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
+                    <span>Learn more</span>
                   </div>
                 </div>
               </motion.div>

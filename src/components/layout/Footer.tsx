@@ -17,10 +17,10 @@ export default function Footer() {
               Making Europe's digital information accessible and trustworthy for everyone.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="p-2 rounded-lg hover:bg-accent text-muted-foreground" aria-label="GitHub">
+              <a href="https://github.com/elonmasai7/Lens" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-accent text-muted-foreground" aria-label="GitHub repository">
                 <Github className="w-4 h-4" />
               </a>
-              <a href="#" className="p-2 rounded-lg hover:bg-accent text-muted-foreground" aria-label="Twitter">
+              <a href="https://elonmasai7.github.io/Lens/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-accent text-muted-foreground" aria-label="EU Lens live demo">
                 <Twitter className="w-4 h-4" />
               </a>
             </div>
@@ -39,8 +39,8 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-sm mb-3">Company</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/about" className="hover:text-foreground transition-colors">About</Link></li>
-              <li><Link to="/about" className="hover:text-foreground transition-colors">Mission</Link></li>
+              <li><Link to="/about" className="hover:text-foreground transition-colors">About Us</Link></li>
+              <li><Link to="/about" className="hover:text-foreground transition-colors">Our Mission</Link></li>
               <li><Link to="/analytics" className="hover:text-foreground transition-colors">Trust Dashboard</Link></li>
             </ul>
           </div>
@@ -48,18 +48,17 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-sm mb-3">Compliance</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-colors">Accessibility Statement</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">GDPR Compliance</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">EU AI Act</a></li>
+              <li><a href="https://ec.europa.eu/social/main.jsp?catId=1202" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Accessibility Act</a></li>
+              <li><a href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">EU AI Act</a></li>
+              <li><a href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/digital-services-act_en" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Digital Services Act</a></li>
+              <li><a href="https://gdpr.eu/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GDPR</a></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} EU Lens. Built with{' '}
-            <Heart className="w-3 h-3 inline text-red-500" /> for an accessible Europe.
+            &copy; {new Date().getFullYear()} EU Lens. Built for an accessible Europe.
           </p>
           <p className="text-xs text-muted-foreground">
             Aligned with the European Accessibility Act, EU AI Act &amp; Digital Services Act
