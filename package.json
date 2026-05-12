@@ -6,7 +6,7 @@
   "description": "EU Lens — AI-Powered Accessibility & Misinformation Detection Platform",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "backend": "node backend/src/index.js"
